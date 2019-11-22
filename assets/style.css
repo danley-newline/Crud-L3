@@ -1,0 +1,61 @@
+ul {
+  list-style-type: none;
+  font-weight: bold;
+  overflow: hidden;
+  background-color: #080000;
+}
+
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px ;
+}
+
+li a:hover:not(.active) {
+  color: #c70a0a;
+}
+a:hover{
+  color: black;
+}
+.active {
+  background: #05c408;
+  margin-left: -1.5%;
+  width: 100%;
+}
+.bs-example {
+  margin: 20px 0px 0px 40%;
+} 
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+body{
+  background: #080000;
+  font-weight: bold;
+}
+.display-3{
+  font-weight: bold;
+  margin-left: 10%;
+  margin-bottom: 3%;
+  color: red;
+  text-shadow: 7px 2px 4px #0f0808;
+}
+.display-4{
+  font-weight: bold;
+  margin-left: 12%;
+  margin-bottom: 3%;
+  color: rgb(190, 115, 1);
+}
+.jumbotron{
+  border-radius: 6%;
+}
+th{
+  color: red;
+}
+.form1{
+  margin-left:30%;
+}
