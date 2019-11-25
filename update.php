@@ -8,13 +8,15 @@ include('inc/nav.php');
     
     if (isset($_POST['update'])) {
 
-        $prenom = htmlspecialchars($_POST['prenom']);
+        $moy = htmlspecialchars($_POST['moy']);
         $contact = htmlspecialchars($_POST['contact']);
-        $residence = htmlspecialchars($_POST['residence']);
+        $php = htmlspecialchars($_POST['php']);
         $nom = htmlspecialchars($_POST['nom']);
+        $math = htmlspecialchars($_POST['math']);
+        $anglais = htmlspecialchars($_POST['anglais']);
 
-         if (empty($prenom) OR empty($nom) OR empty($contact) OR empty($residence)) {
-             echo '
+        if (empty($moy) OR empty($nom) OR empty($contact) OR empty($php) OR empty($math)OR empty($anglais)) {
+            echo '
                 <div class="bs-example text-center">    
                 <div class="toast fade show">
                     <div class="toast-header red" >
@@ -26,13 +28,16 @@ include('inc/nav.php');
                 </div>
              ';
         }
-        $req = $bdd->prepare("update users set nom='".$nom."', prenom='".$prenom. "' , contact='".$contact. "' , residence='".$residence."' where id=" . $_GET["id"]);
+        $req = $bdd->prepare("update users set nom='".$nom."', contact='".$contact. "' , moy='".$moy. "' ,php='".$php. "' ,anglais='".$anglais. "' , math='".$math."' where id=" . $_GET["id"]);
 
                     $result = $req->execute([
-                            ':nom'      => $nom,
-                            ':prenom' => $prenom,
-                            ':contact'      => $contact,
-                            ':residence'      => $residence
+                        ':nom'      => $nom,
+                        ':moy' => $moy,
+                        ':contact'      => $contact,
+                        ':php'      => $php,
+                        ':picture'   => $image,
+                        ':math'      => $math,
+                        ':anglais'      => $anglais
                             
                     ]);
 
@@ -66,7 +71,7 @@ include('inc/nav.php');
    <div class="jumbotron">
        <div class="container mt-5">
            <div class="row">
-                   <h1 class="display-4">MODIFIER INFO ETUDIANT</h1>
+                   <h1 class="display-4">MODIFICATION DES INFOS </h1>
                <div class="col-sm"></div>
                <div class="col-sm"></div>
                <div class="col-sm"></div>
@@ -92,16 +97,24 @@ include('inc/nav.php');
                        <input type="text" name="nom" class="form-control w-25" value="<?= $result[0]['nom'];?>" >
                    </div>
                    <div class="form-group ">
-                       <label >Prenom</label>
-                       <input type="text" name="prenom" class="form-control w-25" value="<?= $result[0]['prenom'];?>" >
-                   </div>
-                   <div class="form-group ">
-                       <label >Contact</label>
+                       <label >contact</label>
                        <input type="text" name="contact" class="form-control w-25" value="<?= $result[0]['contact'];?>" >
                    </div>
                    <div class="form-group ">
-                       <label >Residence</label>
-                       <input type="text" name="residence" class="form-control w-25" value="<?= $result[0]['residence'];?>" >
+                       <label >php</label>
+                       <input type="text" name="php" class="form-control w-25" value="<?= $result[0]['php'];?>" >
+                   </div>
+                   <div class="form-group ">
+                       <label >math</label>
+                       <input type="text" name="math" class="form-control w-25" value="<?= $result[0]['math'];?>" >
+                   </div>
+                   <div class="form-group ">
+                       <label >anglais</label>
+                       <input type="text" name="anglais" class="form-control w-25" value="<?= $result[0]['anglais'];?>" >
+                   </div>
+                   <div class="form-group ">
+                       <label >moy-Annuelle</label>
+                       <input type="text" name="moy" class="form-control w-25" value="<?= $result[0]['moy'];?>" >
                    </div>
                         
                              <input type="submit" name="update" class="btn btn-primary">

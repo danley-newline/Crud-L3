@@ -7,12 +7,10 @@
                         echo "";
                     } 
             ?> href="index.php" >
-            Info-Etudiant
+            Classement-Etudiant
             </a>
                 </li>
-       
-        <li><a <?php echo ($page == 'news' )? "class='active'" : "" ?>  href="news.php">Moyenne-Annuelle</a></li>
-        </ul>
+               </ul>
 </nav>
 
 

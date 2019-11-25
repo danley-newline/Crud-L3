@@ -14,12 +14,14 @@ include('inc/nav.php');
 
     //Si le bouton au nom "submit" est cliquer
     if (isset($_POST['submit'])) {
-        $prenom = htmlspecialchars($_POST['prenom']);
+        $moy = htmlspecialchars($_POST['moy']);
         $contact = htmlspecialchars($_POST['contact']);
-        $residence = htmlspecialchars($_POST['residence']);
+        $php = htmlspecialchars($_POST['php']);
         $nom = htmlspecialchars($_POST['nom']);
+        $math = htmlspecialchars($_POST['math']);
+        $anglais = htmlspecialchars($_POST['anglais']);
 
-         if (empty($prenom) OR empty($nom) OR empty($contact) OR empty($residence) OR empty($_FILES['image']['name'])) {
+         if (empty($moy) OR empty($nom) OR empty($contact) OR empty($php) OR empty($math)OR empty($anglais)OR empty($_FILES['image']['name'])) {
             echo '
                     <div class="bs-example text-center">    
                         <div class="toast fade show">
@@ -62,15 +64,18 @@ include('inc/nav.php');
                         move_uploaded_file($tmp_dir,$upload_dir.$image);
 
                         //Quand tout ce qui est plus haut est bon alors on va exécuter notre requête SQL
-                        $sql = "INSERT INTO `users` ( `nom`, `prenom`, `contact`, `residence`, `picture`) VALUES (:nom, :prenom, :contact, :residence, :picture);";//$sql reçoit la requête d'exécution d'insertion dans la table users des différents paramètre
+                        $sql = "INSERT INTO `users` ( `nom`, `moy`, `contact`, `php`,`math`,`anglais`, `picture`) VALUES (:nom, :moy, :contact, :php, :math,:anglais,:picture);";//$sql reçoit la requête d'exécution d'insertion dans la table users des différents paramètre
                         $req = $bdd->prepare($sql);//la requête $sql est préparée
                         //Une fois la requête preparée on l'exécute 
                         $result = $req->execute([
                             ':nom'      => $nom,
-                            ':prenom' => $prenom,
+                            ':moy' => $moy,
                             ':contact'      => $contact,
-                            ':residence'      => $residence,
-                            ':picture'   => $image
+                            ':php'      => $php,
+                            ':picture'   => $image,
+                            ':math'      => $math,
+                            ':anglais'      => $anglais
+                            
                         ]);
 
                         //Si $result qui permet l'exécution de l'insertion dans la base de donnée n'est pas null alors
@@ -108,7 +113,7 @@ include('inc/nav.php');
     <div class="jumbotron">
         <div class="container mt-5">
             <div class="row">
-                    <h1 class="display-4">AJOUT NOUVEAU ETUDIANT</h1>
+                    <h1 class="display-4">AJOUTER UN ETUDIANT</h1>
                 <div class="col-sm"></div>
                 <div class="col-sm"></div>
                 <div class="col-sm"></div>
@@ -130,21 +135,31 @@ include('inc/nav.php');
                         <input type="text" name="nom" class="form-control w-25" >
                     </div>
                     <div class="form-group ">
-                        <label >Prenom</label>
-                        <input type="text" name="prenom" class="form-control w-25" >
-                    </div>
-                    <div class="form-group ">
-                        <label >Contact</label>
+                        <label >contact</label>
                         <input type="text" name="contact" class="form-control w-25" >
                     </div>
+                    
                     <div class="form-group ">
-                        <label >Residence</label>
-                        <input type="text" name="residence" class="form-control w-25" >
+                        <label >php</label>
+                        <input type="text" name="php" class="form-control w-25" >
+                    </div>
+                    <div class="form-group ">
+                        <label >math</label>
+                        <input type="text" name="math" class="form-control w-25" >
+                    </div>
+                    <div class="form-group ">
+                        <label >anglais</label>
+                        <input type="text" name="anglais" class="form-control w-25" >
+                    </div>
+                    <div class="form-group ">
+                        <label >Moyenne annuelle</label>
+                        <input type="text" name="moy" class="form-control w-25" >
                     </div>
                     <div class="form-group">
                     <label >Choisir Image</label>
                         <input type="file" name="image" class="form-control w-50" id="file" > 
                     </div>
+                    
 
                     <input type="submit" name="submit" class="btn btn-primary">
 
