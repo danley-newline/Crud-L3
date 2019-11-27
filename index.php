@@ -20,11 +20,11 @@ $users = $req->fetchAll();
                 <th scope="col">Numero</th>
                 <th scope="col">Nom/Prenom</th>
                 <th scope="col">contact</th>
-                <th scope="col">PHP</th>
-                <th scope="col">math</th>
-                <th scope="col">anglais</th>
+                <th scope="col">Moy-PHP</th>
+                <th scope="col">Moy-math</th>
+                <th scope="col">Moy-angl</th>
                 <th scope="col">Picture</th>
-                <th scope="col">Moy-Annuelle</th>
+                <th scope="col">Moy-Generale</th>
                 <th scope="col">Modify</th>
                 <th scope="col">Delete</th>
                 </tr>

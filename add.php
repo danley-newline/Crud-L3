@@ -14,14 +14,19 @@ include('inc/nav.php');
 
     //Si le bouton au nom "submit" est cliquer
     if (isset($_POST['submit'])) {
-        $moy = htmlspecialchars($_POST['moy']);
         $contact = htmlspecialchars($_POST['contact']);
         $php = htmlspecialchars($_POST['php']);
         $nom = htmlspecialchars($_POST['nom']);
         $math = htmlspecialchars($_POST['math']);
         $anglais = htmlspecialchars($_POST['anglais']);
-
-         if (empty($moy) OR empty($nom) OR empty($contact) OR empty($php) OR empty($math)OR empty($anglais)OR empty($_FILES['image']['name'])) {
+        $moy = ($php + $math +$anglais)/3;
+        if (empty($moy)){
+            echo'
+            <div class="toast-body red text-center">Veuillez; Saisir les moyennes pour eviter les erreur du haut !</div>
+                        </div>
+            ';
+        }
+         if (empty($nom) OR empty($contact) OR empty($php) OR empty($math)OR empty($anglais)OR empty($_FILES['image']['name'])) {
             echo '
                     <div class="bs-example text-center">    
                         <div class="toast fade show">
@@ -59,7 +64,7 @@ include('inc/nav.php');
 			    if(in_array($imgExt, $valid_extensions)){			
                 
                     //si l'image pèse moins de 5000000Ko
-				    if($imgSize < 5000000) {
+				    if($imgSize < 10000000) {
                         //On déplace le fichier de la mémoire tampon au fichier de destination que nous avons choisis plus haut
                         move_uploaded_file($tmp_dir,$upload_dir.$image);
 
@@ -113,7 +118,7 @@ include('inc/nav.php');
     <div class="jumbotron">
         <div class="container mt-5">
             <div class="row">
-                    <h1 class="display-4">AJOUTER UN ETUDIANT</h1>
+                    <h1 class="display-4"> AJOUTER UN ETUDIANT</h1>
                 <div class="col-sm"></div>
                 <div class="col-sm"></div>
                 <div class="col-sm"></div>
@@ -140,20 +145,16 @@ include('inc/nav.php');
                     </div>
                     
                     <div class="form-group ">
-                        <label >php</label>
+                        <label >moy-php</label>
                         <input type="text" name="php" class="form-control w-25" >
                     </div>
                     <div class="form-group ">
-                        <label >math</label>
+                        <label >moy-math</label>
                         <input type="text" name="math" class="form-control w-25" >
                     </div>
                     <div class="form-group ">
-                        <label >anglais</label>
+                        <label >moy-anglais</label>
                         <input type="text" name="anglais" class="form-control w-25" >
-                    </div>
-                    <div class="form-group ">
-                        <label >Moyenne annuelle</label>
-                        <input type="text" name="moy" class="form-control w-25" >
                     </div>
                     <div class="form-group">
                     <label >Choisir Image</label>

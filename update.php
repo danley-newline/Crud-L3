@@ -8,12 +8,13 @@ include('inc/nav.php');
     
     if (isset($_POST['update'])) {
 
-        $moy = htmlspecialchars($_POST['moy']);
         $contact = htmlspecialchars($_POST['contact']);
         $php = htmlspecialchars($_POST['php']);
         $nom = htmlspecialchars($_POST['nom']);
         $math = htmlspecialchars($_POST['math']);
         $anglais = htmlspecialchars($_POST['anglais']);
+        $moy = ($php + $math +$anglais)/3;
+
 
         if (empty($moy) OR empty($nom) OR empty($contact) OR empty($php) OR empty($math)OR empty($anglais)) {
             echo '
@@ -101,19 +102,19 @@ include('inc/nav.php');
                        <input type="text" name="contact" class="form-control w-25" value="<?= $result[0]['contact'];?>" >
                    </div>
                    <div class="form-group ">
-                       <label >php</label>
+                       <label >moy-php</label>
                        <input type="text" name="php" class="form-control w-25" value="<?= $result[0]['php'];?>" >
                    </div>
                    <div class="form-group ">
-                       <label >math</label>
+                       <label >moy-math</label>
                        <input type="text" name="math" class="form-control w-25" value="<?= $result[0]['math'];?>" >
                    </div>
                    <div class="form-group ">
-                       <label >anglais</label>
+                       <label >moy-anglais</label>
                        <input type="text" name="anglais" class="form-control w-25" value="<?= $result[0]['anglais'];?>" >
                    </div>
                    <div class="form-group ">
-                       <label >moy-Annuelle</label>
+                       <label >moy-Generale</label>
                        <input type="text" name="moy" class="form-control w-25" value="<?= $result[0]['moy'];?>" >
                    </div>
                         

@@ -7,7 +7,7 @@
                         echo "";
                     } 
             ?> href="index.php" >
-            Classement-Etudiant
+            Crud-Gestion-Etudiant
             </a>
                 </li>
                </ul>
