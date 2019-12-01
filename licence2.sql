@@ -51,4 +51,8 @@ CREATE TABLE `users` (
   `picture` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*PUT id in Auto Incremante
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+  
+ ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
